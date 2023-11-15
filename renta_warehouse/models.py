@@ -1,10 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+
+from users.models import CustomUser
 
 
 class Client(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Клиент')
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, verbose_name='Клиент')
     phone_number = PhoneNumberField(verbose_name='Мобильный номер')
     address = models.CharField(verbose_name='Адрес', max_length=200)
 
