@@ -55,7 +55,9 @@ class Box(models.Model):
         return f'№ {self.number}'
 
     def square(self):
-        return self.width * self.length
+        if self.width and self.length:
+            return self.width * self.length
+        return 'Будет рассчитана площадь'
 
     square.short_description = 'Площадь бокса'
 
