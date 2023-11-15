@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'renta_warehouse'
+    'renta_warehouse',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_URL = env.str('STATIC_URL', '/static/')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
