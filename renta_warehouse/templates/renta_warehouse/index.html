@@ -33,13 +33,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex justify-content-center align-items-center">
-                    <form class="d-flex flex-column align-items-center" style="max-width: 420px">
+                    <form method="post" action="{% url 'index' %}" class="d-flex flex-column align-items-center" style="max-width: 420px">
                         <h1 class="modal-title text-center fw-bold mb-3">Регистрация</h1>
-                        <input type="email" required name="EMAIL_CREATE" class="form-control border-8 mb-4 py-3 px-5 border-0 fs_24 SelfStorage__bg_lightgrey" placeholder="E-mail">
+                        <input type="email" required name="email" class="form-control border-8 mb-4 py-3 px-5 border-0 fs_24 SelfStorage__bg_lightgrey" placeholder="E-mail">
                         <input type="text" required name="PASSWORD_CREATE" class="form-control border-8 mb-4 py-3 px-5 border-0 fs_24 SelfStorage__bg_lightgrey" placeholder="Пароль">
                         <input type="text" required name="PASSWORD_CONFIRM" class="form-control border-8 mb-4 py-3 px-5 border-0 fs_24 SelfStorage__bg_lightgrey" placeholder="Подтверждение пароля">
                         <span class="fw-light SelfStorage_grey">Нажимая на кнопку, вы подтверждаете свое <a href="#" class="SelfStorage_grey">согласие на обработку персональных данных</a></span>
-                        <button class="btn border-8 py-3 px-5 mt-5 mb-3 w-100 text-white fs_24 SelfStorage__bg_orange SelfStorage__btn2_orange">Зарегистрироваться</button>
+                        <button class="btn border-8 py-3 px-5 mt-5 mb-3 w-100 text-white fs_24 SelfStorage__bg_orange SelfStorage__btn2_orange" type="submit">Зарегистрироваться</button>
+                        {% csrf_token %}
+                        {{ user_form.as_p }}
                         <span>Уже зарегистрированы? <a href="#" class="SelfStorage_orange" data-bs-toggle="modal" data-bs-target="#SignModal" data-bs-dismiss="modal" aria-label="Close">Войти в личный кабинет</a></span>
                     </form>
                 </div>
@@ -53,12 +55,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex justify-content-center align-items-center">
-                    <form class="d-flex flex-column align-items-center" style="max-width: 420px">
+                    <form method="post" action="{% url 'index' %}" class="d-flex flex-column align-items-center" style="max-width: 420px">
                         <h1 class="modal-title text-center fw-bold mb-3">Вход</h1>
                         <input type="email" required name="EMAIL" class="form-control  border-8 mb-4 py-3 px-5 border-0 fs_24 SelfStorage__bg_lightgrey" placeholder="E-mail">
                         <input type="text" required name="PASSWORD" class="form-control  border-8 mb-4 py-3 px-5 border-0 fs_24 SelfStorage__bg_lightgrey" placeholder="Пароль">
                         <a href="#" class="SelfStorage_orange" data-bs-toggle="modal" data-bs-target="#ForgetModal" data-bs-dismiss="modal" aria-label="Close">Забыли пароль?</a>
-                        <button class="btn border-8 py-3 px-5 mt-5 mb-3 w-100 text-white fs_24 SelfStorage__bg_orange SelfStorage__btn2_orange">Войти</button>
+                        <button class="btn border-8 py-3 px-5 mt-5 mb-3 w-100 text-white fs_24 SelfStorage__bg_orange SelfStorage__btn2_orange" type="submit">Войти</button>
+                        {% csrf_token %}
+                        {{ login_form.as_p }}
                         <span>Нет аккаунта?  <a href="#" class="SelfStorage_orange" data-bs-toggle="modal" data-bs-target="#RegModal" data-bs-dismiss="modal" aria-label="Close">Зарегистрируйтесь на сайте</a></span>
                     </form>
                 </div>
@@ -87,10 +91,12 @@
             <div class="col-12 col-lg-6 mb-3 mb-lg-0">
                 <h1 class="fw-bold SelfStorage_green mb-5">Доставка и бережное хранение ваших вещей</h1>
                 <h4 class="fw-lighter SelfStorage_grey mb-5">Аренда бокса на любой срок Бесплатная доставка от вашего дома </h4>
-                <form class="">
+                <form method="post" action="{% url 'index' %}" class="">
                     <input type="text" required name="EMAIL1" class="form-control border-8 mb-4 py-3 px-5 border-0 fs_24 SelfStorage__bg_lightgrey" placeholder="Укажите ваш e-mail">
-                    <button class="btn border-8 py-3 px-5 w-100 text-white fs_24 SelfStorage__bg_orange SelfStorage__btn2_orange">Рассчитать стоимость</button>
-                    <span class="text-center fw-light">Нажимая на кнопку, вы подтверждаете свое <a href="#" class="link-dark">согласие на обработку персональных данных</a></span>
+                    <button class="btn border-8 py-3 px-5 w-100 text-white fs_24 SelfStorage__bg_orange SelfStorage__btn2_orange" type="submit" >Рассчитать стоимость</button>
+                    {% csrf_token %}
+                    {{ contact_form.as_p }}
+                    <span class="text-center fw-light">Нажимая на кнопку, вы подтверждаете свое <a href="{% static 'renta_warehouse/pdf/Soglasie-na-obrabotku-personalnyh-dannyh.pdf' %}" class="link-dark">согласие на обработку персональных данных</a></span>
                 </form>
             </div>
             <div class="col-12 col-lg-6" style="background-image: url('../../static/renta_warehouse/img/image.png'); background-repeat: no-repeat; background-position: center;"></div>

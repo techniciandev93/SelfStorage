@@ -1,10 +1,38 @@
+from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
 
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('Поле email обязательно для заполнения')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        return self.create_user(email, password, **extra_fields)
+
+
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True, blank=False)
+    username = models.CharField(null=True, blank=True, max_length=150)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
+
+
 class Client(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Клиент')
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, verbose_name='Клиент')
     phone_number = PhoneNumberField(verbose_name='Мобильный номер')
     address = models.CharField(verbose_name='Адрес', max_length=200)
 
