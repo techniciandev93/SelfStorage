@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import django.core.mail.backends.console
+from django.urls import reverse_lazy
 
 from environs import Env
 
@@ -143,3 +144,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
