@@ -35,13 +35,9 @@ def index(request):
                 return HttpResponse('Invalid login')
         elif user_form.is_valid():
             new_user = user_form.save(commit=False)
-            print(new_user)
             new_user.set_password(user_form.cleaned_data['PASSWORD_CONFIRM'])
             new_user.save()
-            print(new_user)
             return redirect('my_rent')
-        else:
-            print(user_form.errors)
 
     return render(
         request,
