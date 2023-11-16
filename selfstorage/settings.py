@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'renta_warehouse',
-    'phonenumber_field'
+    'phonenumber_field',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,7 @@ STATIC_URL = env.str('STATIC_URL', '/static/')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']

@@ -9,7 +9,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('my-rent/', views.get_my_rent, name='my_rent'),
     path('boxes/', views.get_boxes, name='boxes'),
-
 ]
 
 

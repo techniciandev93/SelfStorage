@@ -8,6 +8,9 @@ from django.contrib.auth import authenticate, login
 from .models import CustomUser
 
 
+from users.froms import CustomAuthenticationForm
+
+
 def index(request):
     if request.method == 'POST':
         contact_form = ContactForm(request.POST)
@@ -58,5 +61,3 @@ def get_boxes(request):
         request,
         'renta_warehouse/boxes.html'
     )
-
-

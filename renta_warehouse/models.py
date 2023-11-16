@@ -1,7 +1,11 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
+
 from django.contrib.auth.models import User, AbstractUser
+
 from phonenumber_field.modelfields import PhoneNumberField
+
+from users.models import CustomUser
 
 
 class CustomUserManager(BaseUserManager):
@@ -83,7 +87,9 @@ class Box(models.Model):
         return f'№ {self.number}'
 
     def square(self):
-        return self.width * self.length
+        if self.width and self.length:
+            return self.width * self.length
+        return 'Будет рассчитана площадь'
 
     square.short_description = 'Площадь бокса'
 
