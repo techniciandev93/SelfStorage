@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'renta_warehouse/css/bootstrap.min.css' %}" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'renta_warehouse/css/Style.css' %}">
+    <title>Регистрация</title>
+</head>
+<body>
+<aside class="modal fade show" id="SignModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: block;"
+       aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <button onClick='location.href="{% url 'index' %}"' type="button" class="btn-close" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-center align-items-center">
+
+                <form method="post" action="{% url 'registration' %}" class="d-flex flex-column align-items-center"
+                      style="max-width: 420px">
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            <strong>Ошибка!</strong> Пожалуйста, исправьте следующие ошибки:
+                            <ul>
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    <h1 class="modal-title text-center fw-bold mb-3">Регистрация</h1>
+                    {% csrf_token %}
+                    {{ form.email }}
+                    {{ form.password1 }}
+                    {{ form.password2 }}
+
+                    <span class="fw-light SelfStorage_grey">Нажимая на кнопку, вы подтверждаете свое <a href="#" class="SelfStorage_grey">согласие на обработку персональных данных</a></span>
+
+                    <button class="btn border-8 py-3 px-5 mt-5 mb-3 w-100 text-white fs_24 SelfStorage__bg_orange SelfStorage__btn2_orange"
+                            type="submit">Зарегистрироваться
+                    </button>
+                    <span>Уже зарегистрированы? <a href="{% url 'login' %}" class="SelfStorage_orange" aria-label="Close">Войти в личный кабинет</a></span>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</aside>
+
+</body>
+</html>

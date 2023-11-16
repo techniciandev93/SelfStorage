@@ -1,6 +1,8 @@
 from django import forms
-from .models import CustomUser
+from django.contrib.auth.forms import UserCreationForm
+
 from renta_warehouse.models import Order
+from users.models import CustomUser
 
 
 class OrderAdminForm(forms.ModelForm):
@@ -16,26 +18,17 @@ class OrderAdminForm(forms.ModelForm):
         return cleaned_data
 
 
-class ContactForm(forms.Form):
-    EMAIL1 = forms.EmailField()
+class CustomUserForm(UserCreationForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'autofocus': True,
+        'class': 'form-control fs_24 ps-2 SelfStorage__input',
+        'placeholder': 'Email'
+    }))
 
-
-class LoginForm(forms.Form):
-    EMAIL = forms.EmailField()
-    PASSWORD = forms.CharField()
-
-
-class UserRegistrationForm(forms.ModelForm):
-    email = forms.EmailField()
-    PASSWORD_CREATE = forms.CharField()
-    PASSWORD_CONFIRM = forms.CharField()
-
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = ['email']
+        fields = ('email',)
 
-    def clean_password2(self):
-        cd = self.cleaned_data
-        if cd['PASSWORD_CREATE'] != cd['PASSWORD_CONFIRM']:
-            raise forms.ValidationError('Passwords don\'t match.')
-        return cd['PASSWORD_CONFIRM']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
