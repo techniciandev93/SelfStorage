@@ -1,0 +1,74 @@
+[
+{
+    "model": "renta_warehouse.order",
+    "pk": 1,
+    "fields": {
+        "client": 1,
+        "box": 10,
+        "start_rent_date": "2023-11-17T05:56:36Z",
+        "end_rent_date": "2023-12-17T05:56:39Z",
+        "warehouse_delivery": true,
+        "from_warehouse_delivery": true
+    }
+},
+{
+    "model": "renta_warehouse.order",
+    "pk": 2,
+    "fields": {
+        "client": 2,
+        "box": 11,
+        "start_rent_date": "2023-11-17T05:57:22Z",
+        "end_rent_date": "2023-12-27T05:57:26Z",
+        "warehouse_delivery": true,
+        "from_warehouse_delivery": false
+    }
+},
+{
+    "model": "renta_warehouse.order",
+    "pk": 3,
+    "fields": {
+        "client": 3,
+        "box": 23,
+        "start_rent_date": "2023-11-17T05:57:50Z",
+        "end_rent_date": "2023-12-20T05:57:53Z",
+        "warehouse_delivery": false,
+        "from_warehouse_delivery": true
+    }
+},
+{
+    "model": "renta_warehouse.order",
+    "pk": 4,
+    "fields": {
+        "client": 5,
+        "box": 1,
+        "start_rent_date": "2023-11-10T05:58:13Z",
+        "end_rent_date": "2023-12-10T05:58:15Z",
+        "warehouse_delivery": false,
+        "from_warehouse_delivery": false
+    }
+},
+{
+    "model": "renta_warehouse.order",
+    "pk": 5,
+    "fields": {
+        "client": 6,
+        "box": 6,
+        "start_rent_date": "2023-10-17T05:59:43Z",
+        "end_rent_date": "2023-11-17T05:59:45Z",
+        "warehouse_delivery": true,
+        "from_warehouse_delivery": true
+    }
+},
+{
+    "model": "renta_warehouse.order",
+    "pk": 6,
+    "fields": {
+        "client": 4,
+        "box": 13,
+        "start_rent_date": "2023-10-17T06:00:17Z",
+        "end_rent_date": "2023-12-30T06:00:18Z",
+        "warehouse_delivery": false,
+        "from_warehouse_delivery": false
+    }
+}
+]
