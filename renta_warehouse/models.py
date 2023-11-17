@@ -1,12 +1,15 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from users.models import CustomUser
 
 
 class WareHouse(models.Model):
+    image = models.ImageField(upload_to='images/', verbose_name='Изображение')
     address = models.CharField(verbose_name='Адрес', max_length=200)
     temperature = models.FloatField(verbose_name='Температура')
     height = models.FloatField(verbose_name='Высота')
+    advantage = models.CharField(verbose_name='Преимущество', max_length=150)
 
     class Meta:
         verbose_name = 'Склад'
@@ -33,6 +36,7 @@ class Box(models.Model):
     length = models.FloatField(verbose_name='Длина')
     width = models.FloatField(verbose_name='Ширина')
     height = models.FloatField(verbose_name='Высота')
+    price = models.DecimalField(verbose_name='цена', max_digits=8, decimal_places=2, validators=[MinValueValidator(1)])
 
     class Meta:
         verbose_name = 'Бокс'
