@@ -1,0 +1,56 @@
+[
+{
+    "model": "renta_warehouse.client",
+    "pk": 1,
+    "fields": {
+        "user": 4,
+        "phone_number": "+79296804758",
+        "address": "Москва, ул. Новый Арбат, 15"
+    }
+},
+{
+    "model": "renta_warehouse.client",
+    "pk": 2,
+    "fields": {
+        "user": 5,
+        "phone_number": "+79299495536",
+        "address": "Москва, Цветной бульвар, 11с2"
+    }
+},
+{
+    "model": "renta_warehouse.client",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "phone_number": "+79365552222",
+        "address": "Москва, ул. Ленина, д. 5, кв. 55"
+    }
+},
+{
+    "model": "renta_warehouse.client",
+    "pk": 4,
+    "fields": {
+        "user": 6,
+        "phone_number": "+79365554444",
+        "address": "Москва, ул. Зеленая, д. 10, кв. 100"
+    }
+},
+{
+    "model": "renta_warehouse.client",
+    "pk": 5,
+    "fields": {
+        "user": 7,
+        "phone_number": "+79008010000",
+        "address": "Москва, ул. Новая, д. 100, кв. 15"
+    }
+},
+{
+    "model": "renta_warehouse.client",
+    "pk": 6,
+    "fields": {
+        "user": 8,
+        "phone_number": "+79995554466",
+        "address": "Москва, ул. Гагарина, д. 48, кв. 98"
+    }
+}
+]

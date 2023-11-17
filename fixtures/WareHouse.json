@@ -1,0 +1,47 @@
+[
+{
+    "model": "renta_warehouse.warehouse",
+    "pk": 1,
+    "fields": {
+        "address": "Москва, ул. Рокотова, д. 15",
+        "temperature": 17.0,
+        "height": 3.5
+    }
+},
+{
+    "model": "renta_warehouse.warehouse",
+    "pk": 2,
+    "fields": {
+        "address": "Одинцово, ул. Северная, д. 36",
+        "temperature": 18.0,
+        "height": 3.5
+    }
+},
+{
+    "model": "renta_warehouse.warehouse",
+    "pk": 3,
+    "fields": {
+        "address": "Пушкино, ул. Строителей, д. 5",
+        "temperature": 20.0,
+        "height": 5.5
+    }
+},
+{
+    "model": "renta_warehouse.warehouse",
+    "pk": 4,
+    "fields": {
+        "address": "Люберцы, ул. Советская, д. 88",
+        "temperature": 18.0,
+        "height": 3.5
+    }
+},
+{
+    "model": "renta_warehouse.warehouse",
+    "pk": 5,
+    "fields": {
+        "address": "Домодедово, ул. Орджоникидзе, д. 29",
+        "temperature": 21.0,
+        "height": 4.5
+    }
+}
+]

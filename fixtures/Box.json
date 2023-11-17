@@ -1,0 +1,302 @@
+[
+{
+    "model": "renta_warehouse.box",
+    "pk": 1,
+    "fields": {
+        "number": 1111,
+        "warehouse": 1,
+        "floor": 1,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 2,
+    "fields": {
+        "number": 1112,
+        "warehouse": 1,
+        "floor": 1,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 3,
+    "fields": {
+        "number": 1113,
+        "warehouse": 1,
+        "floor": 1,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 4,
+    "fields": {
+        "number": 1114,
+        "warehouse": 1,
+        "floor": 2,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 5,
+    "fields": {
+        "number": 1115,
+        "warehouse": 1,
+        "floor": 2,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 6,
+    "fields": {
+        "number": 2111,
+        "warehouse": 2,
+        "floor": 1,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 7,
+    "fields": {
+        "number": 2112,
+        "warehouse": 2,
+        "floor": 1,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 8,
+    "fields": {
+        "number": 2113,
+        "warehouse": 2,
+        "floor": 2,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 9,
+    "fields": {
+        "number": 2114,
+        "warehouse": 2,
+        "floor": 2,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 10,
+    "fields": {
+        "number": 2115,
+        "warehouse": 2,
+        "floor": 3,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 1.0
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 11,
+    "fields": {
+        "number": 3111,
+        "warehouse": 3,
+        "floor": 1,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 3.0
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 12,
+    "fields": {
+        "number": 3112,
+        "warehouse": 3,
+        "floor": 1,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 3.0
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 13,
+    "fields": {
+        "number": 3113,
+        "warehouse": 3,
+        "floor": 2,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 4.0
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 14,
+    "fields": {
+        "number": 3114,
+        "warehouse": 3,
+        "floor": 2,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 4.0
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 15,
+    "fields": {
+        "number": 3115,
+        "warehouse": 3,
+        "floor": 3,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 2.0
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 16,
+    "fields": {
+        "number": 4111,
+        "warehouse": 4,
+        "floor": 1,
+        "length": 5.0,
+        "width": 2.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 17,
+    "fields": {
+        "number": 4112,
+        "warehouse": 4,
+        "floor": 1,
+        "length": 4.0,
+        "width": 3.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 18,
+    "fields": {
+        "number": 4113,
+        "warehouse": 4,
+        "floor": 2,
+        "length": 3.0,
+        "width": 3.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 19,
+    "fields": {
+        "number": 4114,
+        "warehouse": 4,
+        "floor": 2,
+        "length": 4.0,
+        "width": 4.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 20,
+    "fields": {
+        "number": 4115,
+        "warehouse": 4,
+        "floor": 3,
+        "length": 5.0,
+        "width": 5.0,
+        "height": 1.0
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 21,
+    "fields": {
+        "number": 5111,
+        "warehouse": 5,
+        "floor": 1,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 22,
+    "fields": {
+        "number": 5112,
+        "warehouse": 5,
+        "floor": 1,
+        "length": 2.0,
+        "width": 2.0,
+        "height": 2.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 23,
+    "fields": {
+        "number": 5113,
+        "warehouse": 5,
+        "floor": 2,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 4.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 24,
+    "fields": {
+        "number": 5114,
+        "warehouse": 5,
+        "floor": 2,
+        "length": 2.0,
+        "width": 1.0,
+        "height": 4.5
+    }
+},
+{
+    "model": "renta_warehouse.box",
+    "pk": 25,
+    "fields": {
+        "number": 5115,
+        "warehouse": 5,
+        "floor": 3,
+        "length": 1.0,
+        "width": 1.0,
+        "height": 2.0
+    }
+}
+]
