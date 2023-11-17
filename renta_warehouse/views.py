@@ -64,4 +64,9 @@ def get_boxes(request):
     )
 
 
+def get_faq(request):
+    return render(
+        request,
+        'renta_warehouse/faq.html'
+    )
 
