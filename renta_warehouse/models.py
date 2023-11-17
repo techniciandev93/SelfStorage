@@ -1,21 +1,6 @@
 from django.db import models
 
-from phonenumber_field.modelfields import PhoneNumberField
-
 from users.models import CustomUser
-
-
-class Client(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, verbose_name='Клиент')
-    phone_number = PhoneNumberField(verbose_name='Мобильный номер')
-    address = models.CharField(verbose_name='Адрес', max_length=200)
-
-    class Meta:
-        verbose_name = 'Клиент'
-        verbose_name_plural = 'Клиенты'
-
-    def __str__(self):
-        return self.user.username
 
 
 class WareHouse(models.Model):
@@ -42,7 +27,7 @@ class WareHouse(models.Model):
 
 
 class Box(models.Model):
-    number = models.IntegerField(unique=True, verbose_name='Номер бокса')
+    number = models.IntegerField(verbose_name='Номер бокса')
     warehouse = models.ForeignKey(WareHouse, on_delete=models.CASCADE,  verbose_name='Склад', related_name='boxes')
     floor = models.IntegerField(verbose_name='Этаж')
     length = models.FloatField(verbose_name='Длина')
@@ -54,7 +39,7 @@ class Box(models.Model):
         verbose_name_plural = 'Боксы'
 
     def __str__(self):
-        return f'№ {self.number}'
+        return f'№ {self.number}. Склад {self.warehouse.address}'
 
     def square(self):
         if self.width and self.length:
@@ -65,7 +50,7 @@ class Box(models.Model):
 
 
 class Order(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE,  verbose_name='Клиент', related_name='orders')
+    client = models.ForeignKey(CustomUser, on_delete=models.CASCADE,  verbose_name='Клиент', related_name='orders')
     box = models.ForeignKey(Box, on_delete=models.CASCADE,  verbose_name='Бокс на складе', related_name='orders')
     start_rent_date = models.DateTimeField(verbose_name='Дата начала аренды', db_index=True)
     end_rent_date = models.DateTimeField(verbose_name='Дата окончания аренды', db_index=True)

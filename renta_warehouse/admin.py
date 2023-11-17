@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from renta_warehouse.forms import OrderAdminForm
-from renta_warehouse.models import Client, WareHouse, Box, Order, BoxImage
+from renta_warehouse.models import WareHouse, Box, Order, BoxImage
 
 
 @admin.register(Order)
@@ -19,11 +19,6 @@ class BoxAdmin(admin.ModelAdmin):
 class WareHouseAdmin(admin.ModelAdmin):
     fields = ('address', 'temperature', 'height', 'free_boxes', 'total_boxes')
     readonly_fields = ('free_boxes', 'total_boxes')
-
-
-@admin.register(Client)
-class ClientAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(BoxImage)

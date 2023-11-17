@@ -5,9 +5,12 @@
 
 {% block header %}
     <li class="nav-item d-flex align-items-center me-5">
-        <div class="d-flex justify-content-center align-items-center rounded-pill SelfStorage__bg_green me-2" style="height: 36px; width: 36px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="white" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+        <div class="d-flex justify-content-center align-items-center rounded-pill SelfStorage__bg_green me-2"
+             style="height: 36px; width: 36px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="white" class="bi bi-telephone-fill"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
             </svg>
         </div>
         <b>8 (800) 000-00-00</b>
@@ -23,12 +26,14 @@
     </li>
     <li class="nav-item d-flex align-items-center me-5">
         <a href="#" class="me-2 mb-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#F28A4F" class="bi bi-bell" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#F28A4F" class="bi bi-bell"
+                 viewBox="0 0 16 16">
                 <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
             </svg>
         </a>
         <a href="#" class="text-decoration-none d-flex align-items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#579586" class="bi bi-person border border-2 rounded-pill" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#579586"
+                 class="bi bi-person border border-2 rounded-pill" viewBox="0 0 16 16">
                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
             </svg>
             <span class="SelfStorage_green">{{ user.email }}</span>
@@ -40,60 +45,86 @@
     <main class="container mt-header">
         <div class="row" role="tablist">
             <div class="col-lg-3 d-flex flex-column nav nav-pills">
-                <button class="ps-0 btn bg-white fs_24 shadow-none SelfStorage_orange SelfStorage_tab active" id="LK-tab" data-bs-toggle="pill" data-bs-target="#LK" type="button" role="tab" aria-controls="LK" aria-selected="true">Личный кабинет</button>
-                <button class="ps-0 btn bg-white fs_24 shadow-none SelfStorage_grey SelfStorage_tab" id="Rent-tab" data-bs-toggle="pill" data-bs-target="#Rent" type="button" role="tab" aria-controls="Rent" aria-selected="false">Моя аренда</button>
+                <button class="ps-0 btn bg-white fs_24 shadow-none SelfStorage_orange SelfStorage_tab active"
+                        id="LK-tab" data-bs-toggle="pill" data-bs-target="#LK" type="button" role="tab"
+                        aria-controls="LK" aria-selected="true">Личный кабинет
+                </button>
+                <button class="ps-0 btn bg-white fs_24 shadow-none SelfStorage_grey SelfStorage_tab" id="Rent-tab"
+                        data-bs-toggle="pill" data-bs-target="#Rent" type="button" role="tab" aria-controls="Rent"
+                        aria-selected="false">Моя аренда
+                </button>
                 <a href="faq.html" class="btn fs_24 shadow-none text-decoration-none SelfStorage_grey SelfStorage_tab">FAQ</a>
-                <a href="{% url 'logout' %}" class="btn fs_24 shadow-none text-decoration-none SelfStorage_grey SelfStorage_tab">Выйти</a>
+                <a href="{% url 'logout' %}"
+                   class="btn fs_24 shadow-none text-decoration-none SelfStorage_grey SelfStorage_tab">Выйти</a>
             </div>
             <div class="col-lg-9">
                 <div class="card tab-content p-5">
                     <div class="tab-pane fade show active" id="LK" role="tabpanel" aria-labelledby="LK-tab">
                         <div class="row">
                             <div class="col-12 col-sm-5 d-flex flex-column align-items-center">
-                                <img src="{% static 'renta_warehouse/img/image10.png' %}" class="rounded-pill mb-3" alt="">
+                                <img src="{% static 'renta_warehouse/img/image10.png' %}" class="rounded-pill mb-3"
+                                     alt="">
                                 <h4>{{ user.first_name }} {{ user.last_name }}</h4>
                             </div>
-                            {{ form }}
-                            <div class="col-12 col-sm-7 d-flex flex-column">
-                                <form method="post" action="{% url 'my_rent_update' pk=user.pk %}">
-                                    {% csrf_token %}
-                                    <label class="fs_24 SelfStorage_green ms-2" for="EMAIL">E-mail</label>
-                                    <input type="email" name="email" id="email" class="form-control fs_24 ps-2 SelfStorage__input" value="{{ user.email }}" disabled>
-                                    <label class="fs_24 SelfStorage_green ms-2" for="PHONE">Телефон</label>
-                                    <input type="tel" name="PHONE_EDIT" id="PHONE" class="form-control fs_24 ps-2 SelfStorage__input" value="+7-909-000-00-00" disabled>
-                                    <label class="fs_24 SelfStorage_green ms-2" for="PASSWORD">Пароль</label>
-                                    <input type="password" name="password" id="password" class="form-control fs_24 ps-2 SelfStorage__input" value="" disabled>
-                                    <button type="submit" class="btn SelfStorage_green ps-1" id="save" style="display: none">Сохранить</button>
-                                    <a class="btn SelfStorage_orange ps-1" id="edit">Редактировать</a>
-                                    <script>
-                                        document.getElementById('edit').addEventListener('click', e => {
-                                            e.preventDefault()
-                                            document.getElementById('email').disabled = false
-                                            document.getElementById('PHONE').disabled = false
-                                            document.getElementById('password').disabled = false
-                                            document.getElementById('password').type = 'text'
-                                            document.getElementById('edit').style.display = 'none'
-                                            document.getElementById('save').style.display = 'inline-block'
-                                        })
-                                        document.getElementById('save').addEventListener('click', () => {
-                                            setTimeout(() => {
-                                                document.getElementById('email').disabled = true
-                                                document.getElementById('PHONE').disabled = true
-                                                document.getElementById('password').disabled = true
-                                                document.getElementById('password').type = 'password'
-                                                document.getElementById('edit').style.display = 'inline-block'
-                                                document.getElementById('save').style.display = 'none'
-                                            }, 0)
-                                        })
-                                    </script>
-                                </form>
-                            </div>
+                            {% if form %}
+                                <div class="col-12 col-sm-7 d-flex flex-column">
+                                    {% if form.errors %}
+                                        <div class="alert alert-danger">
+                                            Пожалуйста, исправьте следующие ошибки:
+                                            <ul>
+                                                {% for field, errors in form.errors.items %}
+                                                    {% for error in errors %}
+                                                        <li>{{ error }}</li>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                    <form action="{% url 'my_rent_update' pk=user.pk %}" method="POST">
+                                        {% csrf_token %}
+                                        <span class="fs_24 SelfStorage_green ms-2">Email</span>
+                                        <span class="form-control fs_24 ps-2 SelfStorage__input">{{ form.email }}</span>
+                                        <span class="fs_24 SelfStorage_green ms-2">Имя</span>
+                                        <span class="form-control fs_24 ps-2 SelfStorage__input">{{ form.first_name }}</span>
+                                        <span class="fs_24 SelfStorage_green ms-2">Фамилия</span>
+                                        <span class="form-control fs_24 ps-2 SelfStorage__input">{{ form.last_name }}</span>
+                                        <span class="fs_24 SelfStorage_green ms-2">Телефон</span>
+                                        <span class="form-control fs_24 ps-2 SelfStorage__input">{{ form.phone_number }}</span>
+                                        <span class="fs_24 SelfStorage_green ms-2">Аддрес</span>
+                                        <p class="form-control fs_24 ps-2 SelfStorage__input">{{ form.address }}</p>
+                                        <center><button type="submit" class="btn SelfStorage_orange ps-1" id="save">Обновить
+                                        </button></center>
+                                    </form>
+                                </div>
+                            {% else %}
+                                <div class="col-12 col-sm-7 d-flex flex-column">
+                                    <div class="user">
+                                        <span class="fs_24 SelfStorage_green ms-2">Email</span>
+                                        <span class="form-control fs_24 ps-2 SelfStorage__input">{{ user.email }}</span>
+                                        <span class="fs_24 SelfStorage_green ms-2">Телефон</span>
+                                        {% if user.phone_number %}
+                                            <span class="form-control fs_24 ps-2 SelfStorage__input">{{ user.phone_number }}</span>
+                                        {% else %}
+                                            <span class="form-control fs_24 ps-2 SelfStorage__input">Не заполнено</span>
+                                        {% endif %}
+                                        <span class="fs_24 SelfStorage_green ms-2">Аддрес</span>
+                                        {% if user.address %}
+                                            <p class="form-control fs_24 ps-2 SelfStorage__input">{{ user.address }}</p>
+                                        {% else %}
+                                            <span class="form-control fs_24 ps-2 SelfStorage__input">Не заполнено</span>
+                                        {% endif %}
+                                    </div>
+                                    <a class="btn SelfStorage_orange ps-1" href="{% url 'my_rent_update' pk=user.pk %}"
+                                       id="edit">Редактировать</a>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="tab-pane fade" id="Rent" role="tabpanel" aria-labelledby="Rent-tab">
                         <h1 class="fw-bold SelfStorage_green mb-5">Добрый день, Екатерина!</h1>
                         <a href="#" class="SelfStorage_orange">История аренды</a>
-                        <h4 class="SelfStorage_grey my-3">Срок Вашей аренды подходит к концу :(<br>Вы можете продлить аренду или забрать вещи до 28 июня 2022 года включительно.</h4>
+                        <h4 class="SelfStorage_grey my-3">Срок Вашей аренды подходит к концу :(<br>Вы можете продлить
+                            аренду или забрать вещи до 28 июня 2022 года включительно.</h4>
                         <div class="mb-5">
                             <h4 class="SelfStorage_green">Мой склад №1</h4>
                             <h4>Одинцово, ул. Северная, д. 36</h4>
@@ -101,8 +132,16 @@
                             <h4>№2389-12</h4>
                             <h4 class="SelfStorage_green">Срок аренды</h4>
                             <h4>15.03.2022 - 28.06.2022</h4>
-                            <div><button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_green SelfStorage__btn2_green mb-3">Продлить аренду</button></div>
-                            <div><button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_orange SelfStorage__btn2_orange mb-3">Открыть бокс</button></div>
+                            <div>
+                                <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_green SelfStorage__btn2_green mb-3">
+                                    Продлить аренду
+                                </button>
+                            </div>
+                            <div>
+                                <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_orange SelfStorage__btn2_orange mb-3">
+                                    Открыть бокс
+                                </button>
+                            </div>
                             <a href="#" class="SelfStorage_orange">Нужна помощь?</a>
                         </div>
 
@@ -113,8 +152,16 @@
                             <h4>№2335-10</h4>
                             <h4 class="SelfStorage_green">Срок аренды</h4>
                             <h4>18.03.2022 - 21.09.2022</h4>
-                            <div><button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_green SelfStorage__btn2_green mb-3">Продлить аренду</button></div>
-                            <div><button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_orange SelfStorage__btn2_orange mb-3">Открыть бокс</button></div>
+                            <div>
+                                <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_green SelfStorage__btn2_green mb-3">
+                                    Продлить аренду
+                                </button>
+                            </div>
+                            <div>
+                                <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_orange SelfStorage__btn2_orange mb-3">
+                                    Открыть бокс
+                                </button>
+                            </div>
                             <a href="#" class="SelfStorage_orange">Нужна помощь?</a>
                         </div>
                     </div>

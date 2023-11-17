@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
@@ -23,13 +24,17 @@ def get_my_rent(request):
     )
 
 
-class CustomUserUpdateView(UpdateView):
+class CustomUserUpdateView(LoginRequiredMixin, UpdateView):
     model = CustomUser
     form_class = CustomUserForm
     template_name = 'renta_warehouse/my-rent.html'
 
     def get_success_url(self):
         return reverse_lazy('my_rent')
+
+    def get_queryset(self):
+        queryset = CustomUser.objects.filter(id=self.request.user.id)
+        return queryset
 
 
 def get_boxes(request):
