@@ -90,8 +90,8 @@ class BoxImage(models.Model):
     image = models.ImageField(upload_to='images/', verbose_name='Изображение')
 
     class Meta:
-        verbose_name = 'Изображение'
-        verbose_name_plural = 'Изображения'
+        verbose_name = 'Изображение боксов'
+        verbose_name_plural = 'Изображения боксов'
 
     def __int__(self):
         return self.number

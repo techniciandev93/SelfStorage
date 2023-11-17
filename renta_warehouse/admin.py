@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from renta_warehouse.forms import OrderAdminForm
-from renta_warehouse.models import Client, WareHouse, Box, Order
+from renta_warehouse.models import Client, WareHouse, Box, Order, BoxImage
 
 
 @admin.register(Order)
@@ -24,3 +24,9 @@ class WareHouseAdmin(admin.ModelAdmin):
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(BoxImage)
+class BoxImageAdmin(admin.ModelAdmin):
+    list_display = ['number']
+    raw_id_fields = ['box']
