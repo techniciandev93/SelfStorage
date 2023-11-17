@@ -78,3 +78,20 @@ class Order(models.Model):
 
     def __str__(self):
         return f'ID заказа {self.id}'
+
+
+class BoxImage(models.Model):
+    box = models.ForeignKey(
+        'Box',
+        on_delete=models.CASCADE,
+        related_name='images',
+        verbose_name='Бокс')
+    number = models.PositiveIntegerField(verbose_name='Порядковый номер изображения', default=0, db_index=True)
+    image = models.ImageField(upload_to='images/', verbose_name='Изображение')
+
+    class Meta:
+        verbose_name = 'Изображение боксов'
+        verbose_name_plural = 'Изображения боксов'
+
+    def __int__(self):
+        return self.number

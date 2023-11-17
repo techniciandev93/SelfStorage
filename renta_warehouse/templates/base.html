@@ -17,7 +17,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{% url 'index' %}">
                     <img src="{% static 'renta_warehouse/img/Vector.svg' %}" alt="[]">
                     <img src="{% static 'renta_warehouse/img/SelfStorage.svg' %}" alt="SelfStorage">
                 </a>
@@ -80,7 +80,8 @@
                 </div>
             </footer>
         {% endblock %}
-        {% block script %}{% endblock %}
+
         <script src="{% static 'renta_warehouse/js/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        {% block script %}{% endblock %}
     </body>
 </html>
