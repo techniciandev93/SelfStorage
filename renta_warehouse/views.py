@@ -48,7 +48,7 @@ def get_boxes(request):
             'boxes_free': warehouse.free_boxes(),
             'boxes_total': warehouse.total_boxes(),
             'price_from': 9999,
-            'advantage': 'Тут должно быть преимущество',
+            'advantage': warehouse.advantage,
             'number': warehouse.pk,
             'temperature': warehouse.temperature,
             'height': warehouse.height,

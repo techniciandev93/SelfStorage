@@ -17,7 +17,7 @@ class BoxAdmin(admin.ModelAdmin):
 
 @admin.register(WareHouse)
 class WareHouseAdmin(admin.ModelAdmin):
-    fields = ('address', 'temperature', 'height', 'free_boxes', 'total_boxes', 'image')
+    fields = ('address', 'temperature', 'height', 'free_boxes', 'total_boxes', 'image', 'advantage')
     readonly_fields = ('free_boxes', 'total_boxes')
 
 
