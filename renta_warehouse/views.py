@@ -75,7 +75,7 @@ def get_boxes(request):
         'width': box.width,
         'height': box.height,
         'size': (box.length, box.width, box.height),
-    } for box in Box.objects.all()]
+    } for box in Box.objects.filter(free=True)]
 
     return render(
         request,
