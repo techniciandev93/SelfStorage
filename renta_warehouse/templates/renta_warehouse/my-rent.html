@@ -107,7 +107,7 @@
                                         {% else %}
                                             <span class="form-control fs_24 ps-2 SelfStorage__input">Не заполнено</span>
                                         {% endif %}
-                                        <span class="fs_24 SelfStorage_green ms-2">Аддрес</span>
+                                        <span class="fs_24 SelfStorage_green ms-2">Адрес</span>
                                         {% if user.address %}
                                             <p class="form-control fs_24 ps-2 SelfStorage__input">{{ user.address }}</p>
                                         {% else %}
@@ -121,49 +121,33 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="Rent" role="tabpanel" aria-labelledby="Rent-tab">
-                        <h1 class="fw-bold SelfStorage_green mb-5">Добрый день, Екатерина!</h1>
+                        <h1 class="fw-bold SelfStorage_green mb-5">Добрый день, {{ user.username }}!</h1>
                         <a href="#" class="SelfStorage_orange">История аренды</a>
-                        <h4 class="SelfStorage_grey my-3">Срок Вашей аренды подходит к концу :(<br>Вы можете продлить
+                        <h4 class="SelfStorage_grey my-3">Срок Вашей аренды подходит к концу:(<br>Вы можете продлить
                             аренду или забрать вещи до 28 июня 2022 года включительно.</h4>
-                        <div class="mb-5">
-                            <h4 class="SelfStorage_green">Мой склад №1</h4>
-                            <h4>Одинцово, ул. Северная, д. 36</h4>
-                            <h4 class="SelfStorage_green">Мой бокс</h4>
-                            <h4>№2389-12</h4>
-                            <h4 class="SelfStorage_green">Срок аренды</h4>
-                            <h4>15.03.2022 - 28.06.2022</h4>
-                            <div>
-                                <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_green SelfStorage__btn2_green mb-3">
-                                    Продлить аренду
-                                </button>
-                            </div>
-                            <div>
-                                <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_orange SelfStorage__btn2_orange mb-3">
-                                    Открыть бокс
-                                </button>
-                            </div>
-                            <a href="#" class="SelfStorage_orange">Нужна помощь?</a>
-                        </div>
 
-                        <div class="mb-5">
-                            <h4 class="SelfStorage_green">Мой склад №2</h4>
-                            <h4>Люберцы, ул. Советская, д. 88</h4>
-                            <h4 class="SelfStorage_green">Мой бокс</h4>
-                            <h4>№2335-10</h4>
-                            <h4 class="SelfStorage_green">Срок аренды</h4>
-                            <h4>18.03.2022 - 21.09.2022</h4>
-                            <div>
-                                <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_green SelfStorage__btn2_green mb-3">
-                                    Продлить аренду
-                                </button>
+                        {% for order in orders %}
+                            <div class="mb-5">
+                                <h4 class="SelfStorage_green">Мой склад №{{ order.box.number }}</h4>
+                                <h4>{{ order.box.warehouse.address }}</h4>
+                                <h4 class="SelfStorage_green">Мой бокс</h4>
+                                <h4>№{{ order.box.warehouse.id }}-{{ order.box.number }}</h4>
+                                <h4 class="SelfStorage_green">Срок аренды</h4>
+                                <h4>{{ order.start_rent_date }} - {{ order.end_rent_date }}</h4>
+                                <div>
+                                    <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_green SelfStorage__btn2_green mb-3">
+                                        Продлить аренду
+                                    </button>
+                                </div>
+                                <div>
+                                    <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_orange SelfStorage__btn2_orange mb-3">
+                                        Открыть бокс
+                                    </button>
+                                </div>
+                                <a href="#" class="SelfStorage_orange">Нужна помощь?</a>
                             </div>
-                            <div>
-                                <button class="btn fs_24 px-5 py-3 text-white border-8 SelfStorage__bg_orange SelfStorage__btn2_orange mb-3">
-                                    Открыть бокс
-                                </button>
-                            </div>
-                            <a href="#" class="SelfStorage_orange">Нужна помощь?</a>
-                        </div>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>
