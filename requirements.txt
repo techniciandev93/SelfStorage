@@ -3,3 +3,4 @@ environs==9.5.0
 django-phonenumber-field==7.1.0
 django-phonenumbers==1.0.1
 Pillow==8.2.0
+djangorestframework==3.14.0

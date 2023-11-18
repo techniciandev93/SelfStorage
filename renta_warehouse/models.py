@@ -29,6 +29,12 @@ class WareHouse(models.Model):
     total_boxes.short_description = 'Всего боксов'
 
 
+class BoxQuerySet(models.QuerySet):
+    def rent_by_user(self, user_id):
+        boxes_rent_by_user = Order.objects.filter(client__pk=user_id).values_list('box')
+        return self.filter(pk__in=boxes_rent_by_user)
+
+
 class Box(models.Model):
     number = models.IntegerField(verbose_name='Номер бокса')
     warehouse = models.ForeignKey(WareHouse, on_delete=models.CASCADE,  verbose_name='Склад', related_name='boxes')
@@ -37,6 +43,8 @@ class Box(models.Model):
     width = models.FloatField(verbose_name='Ширина')
     height = models.FloatField(verbose_name='Высота')
     price = models.DecimalField(verbose_name='цена', max_digits=8, decimal_places=2, validators=[MinValueValidator(1)])
+
+    objects = BoxQuerySet.as_manager()
 
     class Meta:
         verbose_name = 'Бокс'
