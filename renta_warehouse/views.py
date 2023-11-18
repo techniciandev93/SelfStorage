@@ -42,6 +42,7 @@ def get_boxes(request):
     warehouses_on_page = [
         {
             'full_address': warehouse.address,
+            'warehouse_img': request.build_absolute_uri(warehouse.image.url),
             'city': warehouse.address.split(',')[0],
             'address': ', '.join(warehouse.address.split(',')[1:]).lstrip(),
             'boxes_free': warehouse.free_boxes(),
