@@ -56,16 +56,28 @@ def get_boxes(request):
                 request.build_absolute_uri(image.image.url)
                 for box in warehouse.boxes.all()
                 for image in box.images.all()
-            ]
+            ],
         }
         for warehouse in warehouses
     ]
+
+    boxes = [{
+        'flor': box.floor,
+        'number': box.number,
+        'square': box.square(),
+        'price': box.price,
+        'length': box.length,
+        'width': box.width,
+        'height': box.height,
+        'size': (box.length, box.width, box.height),
+    } for box in Box.objects.all()]
 
     return render(
         request,
         'renta_warehouse/boxes.html',
         context={
-            'warehouses': warehouses_on_page
+            'warehouses': warehouses_on_page,
+            'boxes': boxes
         }
     )
 
