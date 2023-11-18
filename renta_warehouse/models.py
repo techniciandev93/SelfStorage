@@ -43,6 +43,7 @@ class Box(models.Model):
     width = models.FloatField(verbose_name='Ширина')
     height = models.FloatField(verbose_name='Высота')
     price = models.DecimalField(verbose_name='цена', max_digits=8, decimal_places=2, validators=[MinValueValidator(1)])
+    free = models.BooleanField(verbose_name='Свободный бокс', default=True)
 
     objects = BoxQuerySet.as_manager()
 
@@ -73,6 +74,8 @@ class Order(models.Model):
     end_rent_date = models.DateTimeField(verbose_name='Дата окончания аренды', db_index=True)
     warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка на склад')
     from_warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка со склада')
+    actual_end_rent_date = models.DateTimeField(verbose_name='Фактическая дата окончания аренды',
+                                                db_index=True, null=True, blank=True)
 
     objects = OrderQuerySet.as_manager()
 
