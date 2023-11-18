@@ -61,6 +61,11 @@ class Box(models.Model):
     square.short_description = 'Площадь бокса'
 
 
+class OrderQuerySet(models.QuerySet):
+    def user_orders(self, user_id):
+        return self.filter(client__pk=user_id)
+
+
 class Order(models.Model):
     client = models.ForeignKey(CustomUser, on_delete=models.CASCADE,  verbose_name='Клиент', related_name='orders')
     box = models.ForeignKey(Box, on_delete=models.CASCADE,  verbose_name='Бокс на складе', related_name='orders')
@@ -68,6 +73,8 @@ class Order(models.Model):
     end_rent_date = models.DateTimeField(verbose_name='Дата окончания аренды', db_index=True)
     warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка на склад')
     from_warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка со склада')
+
+    objects = OrderQuerySet.as_manager()
 
     class Meta:
         verbose_name = 'Заказ'
