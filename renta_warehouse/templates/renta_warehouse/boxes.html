@@ -222,12 +222,21 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-to3" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    {% for box in boxes %}
-                        {% if box.square < 3 %}
+                    {% for box in boxes|square_less_3|slice:':2' %}
                             {% include 'renta_warehouse/box_attributes.html' %}
-                        {% endif %}
                     {% endfor %}
 
+                    <div class="collapse" id="collapse-to3">
+                        {% for box in boxes|square_less_3|slice:'2:' %}
+                            {% include 'renta_warehouse/box_attributes.html' %}
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <button class="btn w-auto py-3 px-5 SelfStorage__bg_orange SelfStorage__btn2_orange text-white text-center fs_24 border-8" id="btn-collapse-to3" data-bs-toggle="collapse" data-bs-target="#collapse-to3" aria-expanded="false" aria-controls="collapse-to3">Другие боксы</button>
+                        <script>
+                            document.getElementById('btn-collapse-to3').addEventListener('click', () => document.getElementById('btn-collapse-to3').classList.add('d-none'))
+                        </script>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-to10" role="tabpanel" aria-labelledby="pills-contact-tab">
                     {% for box in boxes|square_less_10|slice:':2' %}
@@ -246,9 +255,21 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="pills-from10" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    {% for box in boxes|square_more_10 %}
+                    {% for box in boxes|square_more_10|slice:':2' %}
                         {% include 'renta_warehouse/box_attributes.html' %}
                     {% endfor %}
+
+                    <div class="collapse" id="collapse-from10">
+                        {% for box in boxes|square_more_10|slice:'2:' %}
+                            {% include 'renta_warehouse/box_attributes.html' %}
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <button class="btn w-auto py-3 px-5 SelfStorage__bg_orange SelfStorage__btn2_orange text-white text-center fs_24 border-8" id="btn-collapse-from10" data-bs-toggle="collapse" data-bs-target="#collapse-from10" aria-expanded="false" aria-controls="collapse-from10">Другие боксы</button>
+                        <script>
+                            document.getElementById('btn-collapse-from10').addEventListener('click', () => document.getElementById('btn-collapse-from10').classList.add('d-none'))
+                        </script>
+                    </div>
                 </div>
             </div>
         </article>

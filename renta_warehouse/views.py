@@ -52,7 +52,7 @@ def get_boxes(request):
             'address': ', '.join(warehouse.address.split(',')[1:]).lstrip(),
             'boxes_free': warehouse.free_boxes(),
             'boxes_total': warehouse.total_boxes(),
-            'price_from': 9999,
+            'price_from': min([box.price for box in warehouse.boxes.all()]),
             'advantage': warehouse.advantage,
             'number': warehouse.pk,
             'temperature': warehouse.temperature,
