@@ -19,7 +19,6 @@ def index(request):
 
 @login_required(login_url='index')
 def get_my_rent(request):
-    # rent_boxes = Box.objects.rent_by_user(request.user.id)
     orders = Order.objects.user_orders(request.user.id)
     serializer = OrderSerializer(orders, many=True)
     return render(
