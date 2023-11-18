@@ -22,6 +22,7 @@ class OrderAdmin(admin.ModelAdmin):
 class BoxAdmin(admin.ModelAdmin):
     fields = ('number', 'warehouse', 'floor', 'length', 'width', 'height', 'square', 'price', 'free')
     readonly_fields = ('square',)
+    list_filter = ('warehouse',)
 
 
 @admin.register(WareHouse)
