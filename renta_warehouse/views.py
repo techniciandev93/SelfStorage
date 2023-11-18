@@ -6,7 +6,8 @@ from django.views.generic import UpdateView
 
 from renta_warehouse.forms import CustomUserForm
 from users.models import CustomUser
-from .models import Box, WareHouse
+from .models import Box, WareHouse, Order
+from .serializers import BoxSerializer, OrderSerializer
 
 
 def index(request):
@@ -18,9 +19,13 @@ def index(request):
 
 @login_required(login_url='index')
 def get_my_rent(request):
+    # rent_boxes = Box.objects.rent_by_user(request.user.id)
+    orders = Order.objects.user_orders(request.user.id)
+    serializer = OrderSerializer(orders, many=True)
     return render(
         request,
-        'renta_warehouse/my-rent.html'
+        template_name='renta_warehouse/my-rent.html',
+        context={'orders': serializer.data}
     )
 
 
