@@ -47,12 +47,13 @@ def get_boxes(request):
     warehouses_on_page = [
         {
             'full_address': warehouse.address,
+            'warehouse_img': request.build_absolute_uri(warehouse.image.url),
             'city': warehouse.address.split(',')[0],
             'address': ', '.join(warehouse.address.split(',')[1:]).lstrip(),
             'boxes_free': warehouse.free_boxes(),
             'boxes_total': warehouse.total_boxes(),
             'price_from': 9999,
-            'advantage': 'Тут должно быть преимущество',
+            'advantage': warehouse.advantage,
             'number': warehouse.pk,
             'temperature': warehouse.temperature,
             'height': warehouse.height,
@@ -60,16 +61,28 @@ def get_boxes(request):
                 request.build_absolute_uri(image.image.url)
                 for box in warehouse.boxes.all()
                 for image in box.images.all()
-            ]
+            ],
         }
         for warehouse in warehouses
     ]
+
+    boxes = [{
+        'flor': box.floor,
+        'number': box.number,
+        'square': box.square(),
+        'price': box.price,
+        'length': box.length,
+        'width': box.width,
+        'height': box.height,
+        'size': (box.length, box.width, box.height),
+    } for box in Box.objects.all()]
 
     return render(
         request,
         'renta_warehouse/boxes.html',
         context={
-            'warehouses': warehouses_on_page
+            'warehouses': warehouses_on_page,
+            'boxes': boxes
         }
     )
 
