@@ -16,7 +16,8 @@ class OrderAdminForm(forms.ModelForm):
         if not box:
             return cleaned_data
 
-        if box.orders.exists():
+        other_orders_with_box = Order.objects.exclude(pk=self.instance.pk).filter(box=box)
+        if other_orders_with_box.exists():
             raise forms.ValidationError('Этот бокс уже занят. Выберите другой бокс или убедитесь, что он свободен.')
         return cleaned_data
 

@@ -8,6 +8,15 @@ from renta_warehouse.models import WareHouse, Box, Order, BoxImage
 class OrderAdmin(admin.ModelAdmin):
     form = OrderAdminForm
 
+    def save_model(self, request, obj, form, change):
+        if obj.actual_end_rent_date:
+            obj.box.free = False
+            obj.box.save()
+        else:
+            obj.box.free = True
+            obj.box.save()
+        super().save_model(request, obj, form, change)
+
 
 @admin.register(Box)
 class BoxAdmin(admin.ModelAdmin):

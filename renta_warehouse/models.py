@@ -22,8 +22,7 @@ class WareHouse(models.Model):
         return self.boxes.count()
 
     def free_boxes(self):
-        occupied_boxes = self.boxes.filter(orders__isnull=False).count()
-        return self.total_boxes() - occupied_boxes
+        return self.boxes.filter(free=True).count()
 
     free_boxes.short_description = 'Свободно боксов'
     total_boxes.short_description = 'Всего боксов'
