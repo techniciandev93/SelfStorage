@@ -3,11 +3,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
-
 from renta_warehouse.forms import CustomUserForm
 from users.models import CustomUser
-from .models import Box, WareHouse, Order
-from .serializers import BoxSerializer, OrderSerializer
+from .models import WareHouse, Order
 
 
 def index(request):
@@ -20,11 +18,10 @@ def index(request):
 @login_required(login_url='index')
 def get_my_rent(request):
     orders = Order.objects.user_orders(request.user.id)
-    serializer = OrderSerializer(orders, many=True)
     return render(
         request,
         template_name='renta_warehouse/my-rent.html',
-        context={'orders': serializer.data}
+        context={'orders': orders},
     )
 
 
