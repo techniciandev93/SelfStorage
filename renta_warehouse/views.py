@@ -3,29 +3,27 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
-
 from renta_warehouse.forms import CustomUserForm
 from users.models import CustomUser
-from .models import Box, WareHouse, Order
-from .serializers import BoxSerializer, OrderSerializer
+from .models import WareHouse, Order, Box
 
 
 def index(request):
-    return render(
-        request,
-        'renta_warehouse/index.html',
-    )
+    return render(request, 'renta_warehouse/index.html')
+
+
+@login_required(login_url='index')
+def qr(request):
+    return render(request, 'renta_warehouse/qr.html')
 
 
 @login_required(login_url='index')
 def get_my_rent(request):
-    # rent_boxes = Box.objects.rent_by_user(request.user.id)
-    orders = Order.objects.user_orders(request.user.id)
-    serializer = OrderSerializer(orders, many=True)
+    orders = Order.objects.user_orders(request.user.id).left_days()
     return render(
         request,
         template_name='renta_warehouse/my-rent.html',
-        context={'orders': serializer.data}
+        context={'orders': orders},
     )
 
 
@@ -92,4 +90,3 @@ def get_faq(request):
         request,
         'renta_warehouse/faq.html'
     )
-

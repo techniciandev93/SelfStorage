@@ -136,6 +136,9 @@ body {
 .SelfStorage_orange {
     color: #F28A4F !important;
 }
+.SelfStorage_red {
+    color: #FF0000 !important;
+}
 .SelfStorage__bg_orange {
     background-color: #F28A4F !important;
 }
