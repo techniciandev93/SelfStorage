@@ -18,7 +18,6 @@ def index(request):
 @login_required(login_url='index')
 def get_my_rent(request):
     orders = Order.objects.user_orders(request.user.id).left_days()
-
     return render(
         request,
         template_name='renta_warehouse/my-rent.html',
