@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from renta_warehouse.forms import CustomUserForm
 from users.models import CustomUser
-from .models import WareHouse, Order
+from .models import WareHouse, Order, Box
 
 
 def index(request):
