@@ -82,7 +82,7 @@ class Order(models.Model):
     client = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Клиент', related_name='orders')
     box = models.ForeignKey(Box, on_delete=models.CASCADE, verbose_name='Бокс на складе', related_name='orders')
     start_rent_date = models.DateTimeField(verbose_name='Дата начала аренды', db_index=True)
-    end_rent_date = models.DateTimeField(verbose_name='Дата окончания аренды', db_index=True)
+    end_rent_date = models.DateTimeField(verbose_name='Плановая дата окончания аренды', db_index=True)
     warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка на склад')
     from_warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка со склада')
     actual_end_rent_date = models.DateTimeField(verbose_name='Фактическая дата окончания аренды',
