@@ -16,6 +16,9 @@ env.read_env()
 # EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+YOOKASSA_SECRET_KEY = env.str('YOOKASSA_SECRET_KEY')
+YOOKASSA_SHOP_ID = env.int('YOOKASSA_SHOP_ID')
+
 AUTH_USER_MODEL = 'users.CustomUser'
 
 AUTHENTICATION_BACKENDS = [

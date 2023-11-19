@@ -1,13 +1,19 @@
+import time
+from datetime import timedelta
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
+from django.utils import timezone
 
-from renta_warehouse.forms import CustomUserForm
+from renta_warehouse.forms import CustomUserForm, OrderDetailsForm
 from users.models import CustomUser
 from .models import Box, WareHouse, Order
 from .serializers import BoxSerializer, OrderSerializer
+from .service import create_payment_order
 
 
 def index(request):
@@ -67,6 +73,7 @@ def get_boxes(request):
     ]
 
     boxes = [{
+        'id': box.pk,
         'flor': box.floor,
         'number': box.number,
         'square': box.square(),
@@ -93,3 +100,70 @@ def get_faq(request):
         'renta_warehouse/faq.html'
     )
 
+
+@login_required(login_url='login')
+def create_order(request):
+
+    if request.method == 'POST':
+        box_id = request.POST.get('box_details')
+        user_email = request.POST.get('user')
+        client = CustomUser.objects.get(email=user_email)
+        box = Box.objects.get(pk=box_id)
+        start_date = timezone.now()
+        end_date = start_date + timedelta(days=30)
+
+        new_order = Order.objects.create(
+            client=client,
+            box=box,
+            start_rent_date=start_date,
+            end_rent_date=end_date
+        )
+
+        payment_url = create_payment_order(amount=box.price, order_num=new_order.pk)
+        context = {
+            'order_id': new_order.pk,
+            'client_email': new_order.client.email,
+            'box_details': f'Склад: {box.warehouse.address}, '
+                           f'номер бокса: {box.number}, '
+                           f'этаж: {box.floor}, '
+                           f'размеры бокса: { box.length } х { box.width } х { box.height } м², '
+                           f'срок хранения с {start_date.strftime("%d/%m/%y")} по {end_date.strftime("%d/%m/%y")}',
+            'payment_url': payment_url
+        }
+        return render(
+            request,
+            'renta_warehouse/order.html',
+            context=context
+        )
+
+    else:
+        return redirect('boxes')
+
+
+def redirect_to_pay(request):
+    if request.method == 'POST':
+        user_contact = OrderDetailsForm(request.POST)
+        if user_contact.is_valid():
+            user_email = request.POST.get('user_email')
+            address = request.POST.get('address')
+            phone_number = request.POST.get('phone_number')
+            payment_url = request.POST.get('payment_url')
+            user = CustomUser.objects.get(email=user_email)
+            user.phone_number = phone_number
+            user.address = address
+            user.save()
+            return redirect(payment_url)
+
+        else:
+            return redirect('boxes')
+    else:
+        return redirect('boxes')
+
+
+def order_confirmation(request):
+    order_number = request.GET.get('order')
+    order = Order.objects.get(pk=order_number)
+    order.paid = True
+    order.box.free = False
+    order.save()
+    return redirect('my_rent')

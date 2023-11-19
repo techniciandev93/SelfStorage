@@ -9,7 +9,11 @@ urlpatterns = [
     path('my-rent/', views.get_my_rent, name='my_rent'),
     path('my-rent/update/<int:pk>/', views.CustomUserUpdateView.as_view(), name='my_rent_update'),
     path('boxes/', views.get_boxes, name='boxes'),
-    path('faq/', views.get_faq, name='faq')
+    path('faq/', views.get_faq, name='faq'),
+    path('create_order/', views.create_order, name='order'),
+    path('create_order/redirect', views.redirect_to_pay, name='redirect_to_pay'),
+    path('order_confirmation/', views.order_confirmation, name='confirmation'),
+
 ]
 
 
