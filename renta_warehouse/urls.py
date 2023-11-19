@@ -9,7 +9,8 @@ urlpatterns = [
     path('my-rent/', views.get_my_rent, name='my_rent'),
     path('my-rent/update/<int:pk>/', views.CustomUserUpdateView.as_view(), name='my_rent_update'),
     path('boxes/', views.get_boxes, name='boxes'),
-    path('faq/', views.get_faq, name='faq')
+    path('faq/', views.get_faq, name='faq'),
+    path('qr/', views.qr, name='qr'),
 ]
 
 

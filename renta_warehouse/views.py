@@ -9,10 +9,12 @@ from .models import WareHouse, Order, Box
 
 
 def index(request):
-    return render(
-        request,
-        'renta_warehouse/index.html',
-    )
+    return render(request, 'renta_warehouse/index.html')
+
+
+@login_required(login_url='index')
+def qr(request):
+    return render(request, 'renta_warehouse/qr.html')
 
 
 @login_required(login_url='index')
@@ -88,4 +90,3 @@ def get_faq(request):
         request,
         'renta_warehouse/faq.html'
     )
-
