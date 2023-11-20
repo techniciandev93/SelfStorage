@@ -5,3 +5,7 @@ django-phonenumbers==1.0.1
 Pillow==8.2.0
 djangorestframework==3.14.0
 yookassa==2.5.0
+redis==5.0.1
+celery==5.3.5
+
+
