@@ -70,12 +70,14 @@ class BoxImageInline(SortableInlineAdminMixin, admin.StackedInline):
 @admin.register(Box)
 class BoxAdmin(admin.ModelAdmin):
     fields = ('number', 'warehouse', 'floor', 'length', 'width', 'height', 'square', 'price', 'free')
+
     readonly_fields = ('square', 'free')
     raw_id_fields = ['warehouse']
 
     inlines = [
         BoxImageInline,
     ]
+
 
 
 @admin.register(WareHouse)
