@@ -87,6 +87,7 @@ class Order(models.Model):
     from_warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка со склада')
     actual_end_rent_date = models.DateTimeField(verbose_name='Фактическая дата окончания аренды',
                                                 db_index=True, null=True, blank=True)
+    paid = models.BooleanField(verbose_name='Оплачен', default=False)
 
     objects = OrderQuerySet.as_manager()
 

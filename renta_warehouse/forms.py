@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
+from django.core.exceptions import ValidationError
+from phonenumber_field.modelfields import PhoneNumberField
 
 from renta_warehouse.models import Order
 from users.models import CustomUser
@@ -50,3 +52,8 @@ class CustomUserForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ('email', 'first_name', 'last_name', 'phone_number', 'address')
+
+
+class OrderDetailsForm(forms.Form):
+    address = forms.CharField(label='Address')
+    phone_number = PhoneNumberField()
