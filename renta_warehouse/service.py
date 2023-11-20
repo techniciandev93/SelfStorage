@@ -21,7 +21,7 @@ def create_payment_order(amount, order_num,):
         },
         "confirmation": {
           "type": "redirect",
-          "return_url": f"http://127.0.0.1:8000/order_confirmation/?&order={order_num}"
+          "return_url": f"http://193.124.176.10:8080/order_confirmation/?&order={order_num}"
         },
         "description": f"Заказ №{order_num}"
     }, idempotence_key)
