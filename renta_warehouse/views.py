@@ -161,6 +161,8 @@ def order_confirmation(request):
     order_number = request.GET.get('order')
     order = Order.objects.get(pk=order_number)
     order.paid = True
-    order.box.free = False
+    box = order.box
+    box.free = False
     order.save()
+    box.save()
     return redirect('my_rent')
