@@ -16,22 +16,23 @@ from .serializers import BoxSerializer, OrderSerializer
 from .service import create_payment_order
 
 
+
 def index(request):
-    return render(
-        request,
-        'renta_warehouse/index.html',
-    )
+    return render(request, 'renta_warehouse/index.html')
+
+
+@login_required(login_url='index')
+def qr(request):
+    return render(request, 'renta_warehouse/qr.html')
 
 
 @login_required(login_url='index')
 def get_my_rent(request):
-    # rent_boxes = Box.objects.rent_by_user(request.user.id)
-    orders = Order.objects.user_orders(request.user.id)
-    serializer = OrderSerializer(orders, many=True)
+    orders = Order.objects.user_orders(request.user.id).left_days()
     return render(
         request,
         template_name='renta_warehouse/my-rent.html',
-        context={'orders': serializer.data}
+        context={'orders': orders},
     )
 
 
@@ -101,6 +102,7 @@ def get_faq(request):
     )
 
 
+
 @login_required(login_url='login')
 def create_order(request):
 
@@ -167,3 +169,4 @@ def order_confirmation(request):
     order.box.free = False
     order.save()
     return redirect('my_rent')
+

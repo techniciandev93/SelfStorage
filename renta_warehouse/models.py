@@ -1,5 +1,7 @@
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.db.models import F, IntegerField, Value, When, Case, CharField
+from django.db.models.functions import TruncDate, Cast, Now
 
 from users.models import CustomUser
 
@@ -30,13 +32,13 @@ class WareHouse(models.Model):
 
 class BoxQuerySet(models.QuerySet):
     def rent_by_user(self, user_id):
-        boxes_rent_by_user = Order.objects.filter(client__pk=user_id).values_list('box')
+        boxes_rent_by_user = Box.objects.filter(client__pk=user_id).values_list('box')
         return self.filter(pk__in=boxes_rent_by_user)
 
 
 class Box(models.Model):
     number = models.IntegerField(verbose_name='Номер бокса')
-    warehouse = models.ForeignKey(WareHouse, on_delete=models.CASCADE,  verbose_name='Склад', related_name='boxes')
+    warehouse = models.ForeignKey(WareHouse, on_delete=models.CASCADE, verbose_name='Склад', related_name='boxes')
     floor = models.IntegerField(verbose_name='Этаж')
     length = models.FloatField(verbose_name='Длина')
     width = models.FloatField(verbose_name='Ширина')
@@ -65,12 +67,22 @@ class OrderQuerySet(models.QuerySet):
     def user_orders(self, user_id):
         return self.filter(client__pk=user_id)
 
+    def left_days(self):
+        return self.annotate(
+            left_days=Cast((TruncDate(F('end_rent_date')) - TruncDate(Now())), IntegerField()) / 86400000000) \
+            .annotate(deadline=Case(
+                When(left_days__lt=0, then=Value('expired')),
+                When(left_days__gt=14, then=Value('far')),
+                When(left_days__lte=14, then=Value('near')),
+                output_field=CharField())
+            )
+
 
 class Order(models.Model):
-    client = models.ForeignKey(CustomUser, on_delete=models.CASCADE,  verbose_name='Клиент', related_name='orders')
-    box = models.ForeignKey(Box, on_delete=models.CASCADE,  verbose_name='Бокс на складе', related_name='orders')
+    client = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Клиент', related_name='orders')
+    box = models.ForeignKey(Box, on_delete=models.CASCADE, verbose_name='Бокс на складе', related_name='orders')
     start_rent_date = models.DateTimeField(verbose_name='Дата начала аренды', db_index=True)
-    end_rent_date = models.DateTimeField(verbose_name='Дата окончания аренды', db_index=True)
+    end_rent_date = models.DateTimeField(verbose_name='Плановая дата окончания аренды', db_index=True)
     warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка на склад')
     from_warehouse_delivery = models.BooleanField(default=False, verbose_name='Доставка со склада')
     actual_end_rent_date = models.DateTimeField(verbose_name='Фактическая дата окончания аренды',

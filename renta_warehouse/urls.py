@@ -13,6 +13,8 @@ urlpatterns = [
     path('create_order/', views.create_order, name='order'),
     path('create_order/redirect', views.redirect_to_pay, name='redirect_to_pay'),
     path('order_confirmation/', views.order_confirmation, name='confirmation'),
+    path('qr/', views.qr, name='qr'),
+
 
 ]
 
