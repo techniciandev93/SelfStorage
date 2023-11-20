@@ -6,6 +6,8 @@ venv
 .idea
 .DS_Store
 .editorconfig
+celerybeat-schedule.db
+dump.rdb
 
 # C extensions
 *.so
