@@ -11,6 +11,8 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'user_notification_everyday': {
         'task': 'users.tasks.send_notifications',
-        'schedule': crontab(minute='*'),
+        'schedule': crontab(minute='0', hour='0'),
+        # 'for test use this
+        # schedule': crontab(minute='*'),
     }
 }
