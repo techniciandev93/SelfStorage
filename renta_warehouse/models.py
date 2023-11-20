@@ -2,6 +2,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.db.models import F, IntegerField, Value, When, Case, CharField
 from django.db.models.functions import TruncDate, Cast, Now
+from django.utils.html import format_html
 
 from users.models import CustomUser
 
@@ -26,6 +27,13 @@ class WareHouse(models.Model):
     def free_boxes(self):
         return self.boxes.filter(free=True).count()
 
+    def get_preview_image(self):
+        if self.image:
+            return format_html('<img src="{}" style="max-width:200px; max-height:200px"/>',
+                               self.image.url)
+        return 'Здесь будет изображение'
+
+    get_preview_image.short_description = 'Вывод изображения'
     free_boxes.short_description = 'Свободно боксов'
     total_boxes.short_description = 'Всего боксов'
 
@@ -109,8 +117,17 @@ class BoxImage(models.Model):
     image = models.ImageField(upload_to='images/', verbose_name='Изображение')
 
     class Meta:
+        ordering = ['number']
         verbose_name = 'Изображение боксов'
         verbose_name_plural = 'Изображения боксов'
 
-    def __int__(self):
-        return self.number
+    def __str__(self):
+        return f'Изображение № {self.number}, бокс № {self.box.number}'
+
+    def get_preview_image(self):
+        if self.image:
+            return format_html('<img src="{}" style="max-width:200px; max-height:200px"/>',
+                               self.image.url)
+        return 'Здесь будет изображение'
+
+    get_preview_image.short_description = 'Вывод изображения'

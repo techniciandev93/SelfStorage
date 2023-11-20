@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'renta_warehouse',
     'phonenumber_field',
-    'users'
+    'users',
+    'adminsortable2'
 ]
 
 

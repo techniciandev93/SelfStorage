@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
-from django.core.exceptions import ValidationError
 from phonenumber_field.modelfields import PhoneNumberField
 
 from renta_warehouse.models import Order

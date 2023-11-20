@@ -7,5 +7,4 @@ djangorestframework==3.14.0
 yookassa==2.5.0
 redis==5.0.1
 celery==5.3.5
-
-
+django-admin-sortable2==1.0.4

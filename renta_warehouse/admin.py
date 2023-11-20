@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from django.contrib import admin
 
 from renta_warehouse.forms import OrderAdminForm
@@ -59,19 +60,33 @@ class OrderAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
 
+class BoxImageInline(SortableInlineAdminMixin, admin.StackedInline):
+    model = BoxImage
+    fields = ('image', 'get_preview_image')
+    readonly_fields = ('get_preview_image',)
+    extra = 0
+
+
 @admin.register(Box)
 class BoxAdmin(admin.ModelAdmin):
     fields = ('number', 'warehouse', 'floor', 'length', 'width', 'height', 'square', 'price', 'free')
-    readonly_fields = ('square',)
+    readonly_fields = ('square', 'free')
+    raw_id_fields = ['warehouse']
+
+    inlines = [
+        BoxImageInline,
+    ]
 
 
 @admin.register(WareHouse)
 class WareHouseAdmin(admin.ModelAdmin):
-    fields = ('address', 'temperature', 'height', 'free_boxes', 'total_boxes', 'image', 'advantage')
-    readonly_fields = ('free_boxes', 'total_boxes')
+    fields = ('address', 'temperature', 'height', 'free_boxes', 'total_boxes', 'image', 'get_preview_image', 'advantage')
+    readonly_fields = ('free_boxes', 'total_boxes', 'get_preview_image')
 
 
 @admin.register(BoxImage)
-class BoxImageAdmin(admin.ModelAdmin):
-    list_display = ['number']
-    raw_id_fields = ['box']
+class BoxImageAdmin(SortableAdminMixin, admin.ModelAdmin):
+    raw_id_fields = ('box',)
+
+    fields = ('box', 'image', 'get_preview_image')
+    readonly_fields = ('get_preview_image',)

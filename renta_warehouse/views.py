@@ -1,9 +1,7 @@
-import time
 from datetime import timedelta
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
@@ -12,9 +10,7 @@ from django.utils import timezone
 from renta_warehouse.forms import CustomUserForm, OrderDetailsForm
 from users.models import CustomUser
 from .models import Box, WareHouse, Order
-from .serializers import BoxSerializer, OrderSerializer
 from .service import create_payment_order
-
 
 
 def index(request):
@@ -102,7 +98,6 @@ def get_faq(request):
     )
 
 
-
 @login_required(login_url='login')
 def create_order(request):
 
@@ -169,4 +164,3 @@ def order_confirmation(request):
     order.box.free = False
     order.save()
     return redirect('my_rent')
-

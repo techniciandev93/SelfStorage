@@ -13,6 +13,6 @@ app.conf.beat_schedule = {
         'task': 'users.tasks.send_notifications',
         'schedule': crontab(minute='0', hour='0'),
         # 'for test use this
-        # schedule': crontab(minute='*'),
+        # 'schedule': crontab(minute='*'),
     }
 }
