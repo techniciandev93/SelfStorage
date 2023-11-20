@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'renta_warehouse/js/bootstrap.bundle.min.js' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Оформление заказа</title>
+</head>
+<body>
+<div class="container">
+    <div class="order_details">
+        <div class="form-group">
+                <label for="orderNumber">Номер заказа:</label>
+                <h4 id="orderNumber" class="font-weight-bold">{{ order_id }}</h4>
+      </div>
+      <div class="form-group">
+                <label for="email">Ваш email:</label>
+                <h4 id="email" class="font-weight-bold">{{ client_email }}</h4>
+      </div>
+      <div class="form-group">
+                <label for="orderInfo">Ваш заказ:</label>
+                <h4 id="orderInfo" class="font-weight-bold">{{ box_details }}</h4>
+      </div>
+    </div>
+    <form action="{% url "redirect_to_pay" %}" method="post" class="row g-3">
+
+      {% csrf_token %}
+      <input type="hidden" name="user_email" value="{{ user.email }}">
+      <input type="hidden" name="payment_url" value="{{ payment_url }}">
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Адрес</label>
+        <input type="text" required name="address" class="form-control" id="inputAddress" placeholder="Ваш полный адрес">
+      </div>
+      <div class="col-md-2">
+        <label for="inputPhone" class="form-label">Телефон</label>
+        <input type="number" required name="phone_number" class="form-control" id="inputPhone" placeholder="Ваш номер телефона">
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Перейти на страницу оплаты</button>
+      </div>
+    </form>
+</div>
+
+</body>
+</html>

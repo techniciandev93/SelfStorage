@@ -9,12 +9,18 @@ from environs import Env
 env = Env()
 env.read_env()
 
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+YOOKASSA_SECRET_KEY = env.str('YOOKASSA_SECRET_KEY')
+YOOKASSA_SHOP_ID = env.int('YOOKASSA_SHOP_ID')
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -31,12 +37,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bl!zgv3&=a8-#njfz$cpuq*s@p8ssuuu3$1^fnu_8y@m1h$--p'
+SECRET_KEY = env.str('SECRET_KEY', 'REPLACE_ME')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['127.0.0.1'])
 
 
 # Application definition
@@ -50,7 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'renta_warehouse',
     'phonenumber_field',
-    'users'
+    'users',
+    'adminsortable2'
 ]
 
 
@@ -145,3 +152,14 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
+
+
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_BROKER_TRANSPORT_OPTION = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
