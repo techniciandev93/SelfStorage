@@ -17,12 +17,12 @@ def index(request):
     return render(request, 'renta_warehouse/index.html')
 
 
-@login_required(login_url='index')
+@login_required(login_url='users:login')
 def qr(request):
     return render(request, 'renta_warehouse/qr.html')
 
 
-@login_required(login_url='index')
+@login_required(login_url='users:login')
 def get_my_rent(request):
     orders = Order.objects.user_orders(request.user.id).left_days()
     return render(
@@ -55,7 +55,7 @@ def get_boxes(request):
             'address': ', '.join(warehouse.address.split(',')[1:]).lstrip(),
             'boxes_free': warehouse.free_boxes(),
             'boxes_total': warehouse.total_boxes(),
-            'price_from': min([box.price for box in warehouse.boxes.all()]),
+            'price_from': min([box.price for box in warehouse.boxes.all()], default=0),
             'advantage': warehouse.advantage,
             'number': warehouse.pk,
             'temperature': warehouse.temperature,
@@ -98,7 +98,7 @@ def get_faq(request):
     )
 
 
-@login_required(login_url='login')
+@login_required(login_url='users:login')
 def create_order(request):
 
     if request.method == 'POST':
@@ -161,6 +161,8 @@ def order_confirmation(request):
     order_number = request.GET.get('order')
     order = Order.objects.get(pk=order_number)
     order.paid = True
-    order.box.free = False
+    box = order.box
+    box.free = False
     order.save()
+    box.save()
     return redirect('my_rent')
