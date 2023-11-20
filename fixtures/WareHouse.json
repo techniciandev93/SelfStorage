@@ -3,45 +3,55 @@
     "model": "renta_warehouse.warehouse",
     "pk": 1,
     "fields": {
+        "image": "images/image11.png",
         "address": "Москва, ул. Рокотова, д. 15",
         "temperature": 17.0,
-        "height": 3.5
+        "height": 3.5,
+        "advantage": "Рядом с метро"
     }
 },
 {
     "model": "renta_warehouse.warehouse",
     "pk": 2,
     "fields": {
-        "address": "Одинцово, ул. Северная, д. 36",
+        "image": "images/image9.png",
+        "address": "Одинцово, ул. Серверная, д. 36",
         "temperature": 18.0,
-        "height": 3.5
+        "height": 3.5,
+        "advantage": "Парковка"
     }
 },
 {
     "model": "renta_warehouse.warehouse",
     "pk": 3,
     "fields": {
+        "image": "images/image15.png",
         "address": "Пушкино, ул. Строителей, д. 5",
         "temperature": 20.0,
-        "height": 5.5
+        "height": 5.5,
+        "advantage": "Высокие потолки"
     }
 },
 {
     "model": "renta_warehouse.warehouse",
     "pk": 4,
     "fields": {
+        "image": "images/image151.png",
         "address": "Люберцы, ул. Советская, д. 88",
         "temperature": 18.0,
-        "height": 3.5
+        "height": 3.5,
+        "advantage": "Осталось мало боксов"
     }
 },
 {
     "model": "renta_warehouse.warehouse",
     "pk": 5,
     "fields": {
+        "image": "images/image16.png",
         "address": "Домодедово, ул. Орджоникидзе, д. 29",
         "temperature": 21.0,
-        "height": 4.5
+        "height": 4.5,
+        "advantage": "Большие боксы"
     }
 }
 ]
